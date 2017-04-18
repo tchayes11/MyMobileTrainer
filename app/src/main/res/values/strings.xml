@@ -4,4 +4,22 @@
     <string name="unsuccessful_login">You have entered a incorrect user name</string>
     <string name="user_name">jdoe</string>
     <string name="password">welcome1</string>
+    <string name="view_customer">View customer session</string>
+    <string name="view_customer_pic">View customer with picture</string>
+    <string name="add_cutomer">New customer information</string>
+    <string name="customer_billing">View billing information</string>
+    <string name="credit_card_info">Display credit card information</string>
+    <string name="sign_completed_session">Sign for a completed session</string>
+    <string name="printer_button">Print receipt if available</string>
+    <string name="email_button">Email receipt to customer</string>
+    <string name="add_new_customer">Add new customer</string>
+    <string name="take_pic">Take picture here</string>
+    <string name="view_sessions">View customer session</string>
+    <string name="check_session">Check customer session complete</string>
+    <string name="edit_session">Edit customer session</string>
+    <string name="Logging_off">Logging You Off</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

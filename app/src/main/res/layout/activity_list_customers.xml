@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <fragment
+        android:name="com.bignerdranch.android.mymobiletrainer.CustomerFragment"
+        android:id="@+id/customer_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/view_customer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_customer"/>
+
+
+
+    <Button
+        android:id="@+id/addNewCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_cutomer"
+        android:text="@string/add_new_customer"/>
+
+
+    <ImageButton
+        android:id="@+id/camera_imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/camera_icon"
+        android:text="@string/take_pic"/>
+
+
+</LinearLayout>
