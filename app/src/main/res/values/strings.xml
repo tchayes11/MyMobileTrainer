@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MyMobileTrainer</string>
     <string name="successful_login">You are successfully logged in</string>
-    <string name="unsuccessful_login">You have entered a incorrect user name</string>
+    <string name="unsuccessful_login">You have unsuccessful login</string>
     <string name="user_name">jdoe</string>
     <string name="password">welcome1</string>
     <string name="view_customer">View customer session</string>

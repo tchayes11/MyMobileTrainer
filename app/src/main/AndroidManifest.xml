@@ -14,37 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+
             </intent-filter>
-        </activity>
-        <activity android:name=".ListCustomers"
-                  android:parentActivityName=".LoginActivity">
-            <meta-data
-                  android:name="android.Support.Parent_Activity"
-                  android:value=".LoginActivity"/>
-        </activity>
-        <activity android:name=".BillingActivity"
-                  android:parentActivityName=".LoginActivity">
-            <meta-data
-                android:name="android.Support.Parent_Activity"
-                android:value=".LoginActivity"/>
+
 
         </activity>
-        <activity android:name=".SessionsActivity"
-                  android:parentActivityName=".LoginActivity">
-            <meta-data
-                android:name="android.Support.Parent_Activity"
-                android:value=".LoginActivity"/>
+        <activity android:name=".ListCustomers">
+
         </activity>
-        <activity android:name=".PictureActivity"
-                  android:parentActivityName=".LoginActivity">
-            <meta-data
-                android:name="android.Support.Parent_Activity"
-                android:value=".LoginActivity"/>
+        <activity android:name=".BillingActivity">
+
+
+        </activity>
+        <activity android:name=".SessionsActivity">
+
+        </activity>
+        <activity android:name=".PictureActivity">
+
         </activity>
     </application>
 
