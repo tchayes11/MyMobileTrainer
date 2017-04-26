@@ -28,7 +28,7 @@ public class ListCustomers extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(ListCustomers.this, BillingActivity.class);
+                Intent intent = new Intent(ListCustomers.this,PictureActivity.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +42,7 @@ public class ListCustomers extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //Intent intent= getIntent();
+
     }
 
 

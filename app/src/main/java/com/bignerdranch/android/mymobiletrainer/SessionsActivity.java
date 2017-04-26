@@ -23,7 +23,7 @@ public class SessionsActivity extends AppCompatActivity {
 
             @Override
             public void onClick (View view){
-                Intent intent = new Intent(SessionsActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SessionsActivity.this, BillingActivity.class);
                 startActivity(intent);
             }
         });
@@ -32,7 +32,7 @@ public class SessionsActivity extends AppCompatActivity {
 
             @Override
             public void onClick (View view){
-                Intent intent = new Intent(SessionsActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SessionsActivity.this, BillingActivity.class);
                 startActivity(intent);
             }
         });

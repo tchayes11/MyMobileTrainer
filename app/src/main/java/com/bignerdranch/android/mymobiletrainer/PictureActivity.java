@@ -22,7 +22,7 @@ public class PictureActivity extends AppCompatActivity {
 
             @Override
             public void onClick (View view){
-                Intent intent = new Intent(PictureActivity.this, LoginActivity.class);
+                Intent intent = new Intent(PictureActivity.this, SessionsActivity.class);
                 startActivity(intent);
             }
         });

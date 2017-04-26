@@ -9,6 +9,13 @@
         android:id="@+id/customer_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/camera_imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/camera_icon"
+        android:text="@string/take_pic"/>
     <Button
         android:id="@+id/view_customer_pic"
         android:layout_width="match_parent"

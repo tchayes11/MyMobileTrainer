@@ -27,12 +27,7 @@
         android:text="@string/add_new_customer"/>
 
 
-    <ImageButton
-        android:id="@+id/camera_imageButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/camera_icon"
-        android:text="@string/take_pic"/>
+
 
 
 </LinearLayout>
