@@ -3,11 +3,72 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="com.bignerdranch.android.mymobiletrainer.SampleFragment">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/customer_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:id="@+id/textFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter first name"/>
+
+    <EditText
+        android:id="@+id/customer_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"/>
+
+        <TextView
+        android:id="@+id/textLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter last name"/>
+
+    <EditText
+        android:id="@+id/customer_last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"/>
+
+    <TextView
+        android:id="@+id/textEmailAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter email address"/>
+
+    <EditText
+        android:id="@+id/customer_emailAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/textFitLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What is your fitness level"/>
+
+    <EditText
+        android:id="@+id/customer_fit_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:text="Save"/>
+
+
 
 </FrameLayout>

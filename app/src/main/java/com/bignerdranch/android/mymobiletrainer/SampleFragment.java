@@ -1,12 +1,21 @@
 package com.bignerdranch.android.mymobiletrainer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import static android.R.attr.button;
 
 
 /**
@@ -18,19 +27,25 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class SampleFragment extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String KEY_TITLE = "key_title";
+
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private EditText FirstName;
+    private EditText LastName;
+    private EditText EmailAddress;
+    private EditText FitnessLevel;
+
 
     private OnFragmentInteractionListener mListener;
 
+
     public SampleFragment() {
-        // Required empty public constructor
+
+
     }
 
     /**
@@ -45,19 +60,24 @@ public class SampleFragment extends Fragment {
     public static SampleFragment newInstance(String param1, String param2) {
         SampleFragment fragment = new SampleFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        // args.putString(ARG_PARAM1, param1);
+        // args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            //mParam1 = getArguments().getString(ARG_PARAM1);
+            //mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
+
     }
 
     @Override
@@ -65,7 +85,48 @@ public class SampleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sample, container, false);
+
+
+        EditText FirstName = (EditText) findViewById(R.id.customer_first_name);
+
+        EditText LastName = (EditText) findViewById(R.id.customer_last_name);
+
+        EditText EmailAddress = (EditText) findViewById(R.id.customer_emailAdd);
+
+        EditText FitnessLevel = (EditText) findViewById(R.id.customer_fit_level);
+
+
+        Bundle args = getArguments();
+        if (args == null)
+
+        {
+            String title = args.getString(KEY_TITLE);
+            TextView tvTitle = (TextView) view.findViewById(KEY_TITLE);
+            tvTitle.setText(title);
+            String firstName = String.valueOf(FirstName.getText().toString());
+            String lastName = String.valueOf(LastName.getText().toString());
+            String emailAdress = String.valueOf(EmailAddress.getText().toString());
+            String fitLevel = String.valueOf(FitnessLevel.getText().toString());
+
+        }
+        return v;
+        Button button = (Button) view.findViewById(R.id.save_button);
+        button.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ListCustomers.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
