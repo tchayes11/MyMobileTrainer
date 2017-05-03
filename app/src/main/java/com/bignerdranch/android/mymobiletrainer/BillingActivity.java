@@ -43,7 +43,7 @@ public class BillingActivity extends AppCompatActivity {
 
             @Override
             public void onClick (View view){
-                Intent intent = new Intent(BillingActivity.this, SessionsActivity.class);
+                Intent intent = new Intent(BillingActivity.this, ListCustomers.class);
                 startActivity(intent);
             }
         });

@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -33,13 +34,15 @@ public class ListCustomers extends AppCompatActivity {
     private Button mViewCustomers;
     private Button mAddNewCustomer;
     private Button mSave;
+    private int DATABASE_VERSION;
+    private SQLiteDatabase myHelper;
+    private Context mContext;
 
-
-    private EditText FirstName;
-    private EditText LastName;
-    private EditText EmailAddress;
-    private EditText FitnessLevel;
-    //private MyFitnessDatabase myfDB;
+    private TextView First;
+    private TextView Last;
+    private TextView Email;
+    private TextView Level;
+    private MyFitnessDatabase myfDB;
 
 
 
@@ -50,10 +53,14 @@ public class ListCustomers extends AppCompatActivity {
 
         final MyFitnessDatabase db = new MyFitnessDatabase(this);
 
-        FirstName = (EditText) findViewById(R.id.customer_first_name);
-        LastName = (EditText) findViewById(R.id.customer_last_name);
-        EmailAddress = (EditText) findViewById(R.id.customer_emailAdd);
-        FitnessLevel = (EditText) findViewById(R.id.customer_fit_level);
+
+    }
+    public void add(Context context) {
+
+        myHelper = new MyFitnessDatabase.FitnessDBOpenHelper(mContext, null, null, DATABASE_VERSION).getWritableDatabase();
+        Context  c= getApplicationContext();
+
+
 
 
         mViewCustomers = (Button) findViewById(R.id.view_customer);
@@ -62,9 +69,8 @@ public class ListCustomers extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                addNewCustomer("Mark ","Walberg","mw@hotmail.com","High");
-                addNewCustomer("Adrian", "Washington", "therealdenzel@liar.com", "Low");
-                Intent intent = new Intent(ListCustomers.this, CustomerLab.class);
+
+                Intent intent = new Intent(ListCustomers.this, PictureActivity.class);
                 startActivity(intent);
             }
         });
@@ -74,15 +80,6 @@ public class ListCustomers extends AppCompatActivity {
         mAddNewCustomer.setOnClickListener(new View.OnClickListener() {
 
 
-
-
-
-
-
-
-
-
-
             /*String firstName = String.valueOf(FirstName.getText().toString());
             String lastName= String.valueOf(LastName.getText().toString());
             String emailAdress = String.valueOf(EmailAddress.getText().toString());
@@ -90,7 +87,10 @@ public class ListCustomers extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
+                First = (TextView) findViewById(R.id.textFirstName);
+                Last = (TextView) findViewById(R.id.textLastName);
+                Email = (TextView) findViewById(R.id.textEmailAdd);
+                Level = (TextView) findViewById(R.id.textFitLevel);
 
 
 

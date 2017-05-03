@@ -1,5 +1,6 @@
 package com.bignerdranch.android.mymobiletrainer;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -38,6 +39,7 @@ public class SampleFragment extends Fragment {
     private EditText LastName;
     private EditText EmailAddress;
     private EditText FitnessLevel;
+    private MyFitnessDatabase myfDB;
 
 
     private OnFragmentInteractionListener mListener;
@@ -83,59 +85,62 @@ public class SampleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        myfDB=new MyFitnessDatabase(getActivity());
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sample, container, false);
+       View view=  inflater.inflate(R.layout.fragment_sample, container, false);
 
 
-        EditText FirstName = (EditText) findViewById(R.id.customer_first_name);
+        EditText FirstName = (EditText) view.findViewById(R.id.customer_first_name);
 
-        EditText LastName = (EditText) findViewById(R.id.customer_last_name);
+        EditText LastName = (EditText)view.findViewById(R.id.customer_last_name);
 
-        EditText EmailAddress = (EditText) findViewById(R.id.customer_emailAdd);
+        EditText EmailAddress = (EditText)view.findViewById(R.id.customer_emailAdd);
 
-        EditText FitnessLevel = (EditText) findViewById(R.id.customer_fit_level);
+        EditText FitnessLevel = (EditText)view.findViewById(R.id.customer_fit_level);
 
 
-        Bundle args = getArguments();
-        if (args == null)
+       // Bundle args = getArguments();
+       // if (args == null) {
+           // String title = args.getString(KEY_TITLE);
 
-        {
-            String title = args.getString(KEY_TITLE);
-            TextView tvTitle = (TextView) view.findViewById(KEY_TITLE);
-            tvTitle.setText(title);
+
             String firstName = String.valueOf(FirstName.getText().toString());
             String lastName = String.valueOf(LastName.getText().toString());
             String emailAdress = String.valueOf(EmailAddress.getText().toString());
             String fitLevel = String.valueOf(FitnessLevel.getText().toString());
 
+
+            Button button = (Button) view.findViewById(R.id.save_button);
+            button.setOnClickListener(new View.OnClickListener() {
+
+
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getActivity(), ListCustomers.class);
+                    startActivity(intent);
+
+                }
+            });
+
+        return view;
         }
-        return v;
-        Button button = (Button) view.findViewById(R.id.save_button);
-        button.setOnClickListener(new View.OnClickListener()
-
-        {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ListCustomers.class);
-                startActivity(intent);
-
-            }
-        });
-
-    }
 
 
 
 
 
-    // TODO: Rename method, update argument and hook method into UI event
+
+
+        // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
 
-    @Override
+   /* @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
@@ -144,7 +149,7 @@ public class SampleFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
-    }
+    }*/
 
     @Override
     public void onDetach() {

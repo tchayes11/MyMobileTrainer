@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (username.equals(getString(R.string.user_name)) && password.equals(getString(R.string.password))) {
 
-                    Intent intent = new Intent(LoginActivity.this, ListCustomers.class);
+                    Intent intent = new Intent(LoginActivity.this, BillingActivity.class);
                     startActivity(intent);
                 } else {
                     Message = R.string.unsuccessful_login;

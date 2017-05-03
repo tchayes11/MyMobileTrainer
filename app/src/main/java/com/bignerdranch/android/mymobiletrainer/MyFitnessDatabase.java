@@ -31,6 +31,7 @@ public class MyFitnessDatabase {
 
         addNewCustomer("Mark ","Walberg","mw@hotmail.com","High");
         addNewCustomer("Adrian", "Washington", "therealdenzel@liar.com", "Low");
+        SQLiteDatabase db = fitnessDBOpenHelper.getReadableDatabase();
     }
 
     public void closeDatabase() {
