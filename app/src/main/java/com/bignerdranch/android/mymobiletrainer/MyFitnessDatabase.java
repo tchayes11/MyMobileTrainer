@@ -31,7 +31,7 @@ public class MyFitnessDatabase {
 
         addNewCustomer("Mark ","Walberg","mw@hotmail.com","High");
         addNewCustomer("Adrian", "Washington", "therealdenzel@liar.com", "Low");
-        SQLiteDatabase db = fitnessDBOpenHelper.getReadableDatabase();
+//        SQLiteDatabase db = fitnessDBOpenHelper.getReadableDatabase();
     }
 
     public void closeDatabase() {
@@ -44,7 +44,7 @@ public class MyFitnessDatabase {
         String[] result_columns = new String[]{
                 KEY_ID, KEY_FIRST_NAME_COLUMN, KEY_LAST_NAME_COLUMN, KEY_EMAIL_ADDRESS_COLUMN, KEY_FITNESS_LEVEL_COLUMN};
 
-        String where = KEY_EMAIL_ADDRESS_COLUMN + "=" + 1;
+        String where = null;
         String whereArgs[] = null;
         String groupBy = null;
         String having = null;

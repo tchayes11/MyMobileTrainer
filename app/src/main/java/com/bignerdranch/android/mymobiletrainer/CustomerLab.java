@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class CustomerLab {
     private static CustomerLab sCustomerLab;
-    private static final String TAG = "CustomerLab";
+
 
     private int DATABASE_VERSION;
     private SQLiteDatabase myHelper;
@@ -23,8 +23,9 @@ public class CustomerLab {
     return sCustomerLab;
     }
     private CustomerLab(Context context){
-        mContext = context.getApplicationContext();
-        myHelper = new MyFitnessDatabase.FitnessDBOpenHelper(mContext, null, null, DATABASE_VERSION).getReadableDatabase();
+        this.mContext = context;
+       // myHelper = new MyFitnessDatabase(mContext);
+        myHelper = new MyFitnessDatabase.FitnessDBOpenHelper(mContext, null, null, DATABASE_VERSION).getWritableDatabase();
 
     }
 

@@ -1,6 +1,11 @@
 package com.bignerdranch.android.mymobiletrainer;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,9 +22,11 @@ import java.io.IOException;
 
 
 public class LoginActivity extends AppCompatActivity {
+    public final int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 1;
 
     private EditText Username;
     private EditText Password;
+
     int Message;
 
     @Override
@@ -51,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (username.equals(getString(R.string.user_name)) && password.equals(getString(R.string.password))) {
 
-                    Intent intent = new Intent(LoginActivity.this, BillingActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, ListCustomers.class);
                     startActivity(intent);
                 } else {
                     Message = R.string.unsuccessful_login;
@@ -69,6 +76,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }
 

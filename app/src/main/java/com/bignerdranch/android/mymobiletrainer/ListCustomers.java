@@ -6,7 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,12 +22,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import static android.R.attr.data;
 import static android.R.attr.value;
 import static com.bignerdranch.android.mymobiletrainer.MyFitnessDatabase.KEY_EMAIL_ADDRESS_COLUMN;
 import static com.bignerdranch.android.mymobiletrainer.MyFitnessDatabase.KEY_FIRST_NAME_COLUMN;
@@ -37,30 +47,28 @@ public class ListCustomers extends AppCompatActivity {
     private int DATABASE_VERSION;
     private SQLiteDatabase myHelper;
     private Context mContext;
-
+    private Button takepic;
     private TextView First;
     private TextView Last;
     private TextView Email;
     private TextView Level;
     private MyFitnessDatabase myfDB;
-
-
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_TAKE_PHOTO = 1;
+    private ImageView mImageView;
+    String mCurrentPhotoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_customers);
 
-        final MyFitnessDatabase db = new MyFitnessDatabase(this);
 
 
-    }
-    public void add(Context context) {
+        // public void add(Context context) {
 
-        myHelper = new MyFitnessDatabase.FitnessDBOpenHelper(mContext, null, null, DATABASE_VERSION).getWritableDatabase();
-        Context  c= getApplicationContext();
-
-
+        // myHelper = new MyFitnessDatabase.FitnessDBOpenHelper(mContext, null, null, DATABASE_VERSION).getWritableDatabase();
+        //Context  c= getApplicationContext();
 
 
         mViewCustomers = (Button) findViewById(R.id.view_customer);
@@ -91,49 +99,68 @@ public class ListCustomers extends AppCompatActivity {
                 Last = (TextView) findViewById(R.id.textLastName);
                 Email = (TextView) findViewById(R.id.textEmailAdd);
                 Level = (TextView) findViewById(R.id.textFitLevel);
-
-
-
-                Bundle args = new Bundle();
-                args.putString(SampleFragment.KEY_TITLE, "Customer List");
-
-
-                SampleFragment fragment = new SampleFragment();
-                fragment.setArguments(args);
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).commit();
-
-
-                Intent intent = new Intent(ListCustomers.this, SampleFragment.class);
-
-                startActivity(intent);
             }
-        });
 
 
-    }
 
 
            /* mContext = context.getApplicationContext();
             myHelper = new MyFitnessDatabase.FitnessDBOpenHelper(mContext, null, null, DATABASE_VERSION).getWritableDatabase();
             myfDB = new MyFitnessDatabase(this);
 */
+        });
 
+    }
 
+    public void dispatchTakePictureIntent(View view) throws IOException {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            Uri photoURI = FileProvider.getUriForFile(ListCustomers.this,
+                    ListCustomers.this.getApplicationContext().getPackageName() + ".provider",
+                    createImageFile());
 
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,photoURI);
+            startActivity(takePictureIntent);
+            /*
+            File photoFile = null;
 
-           public void addNewCustomer(String firstName, String lastName, String emailAdd, String fitLevel) {
-                   ContentValues newValues = new ContentValues();
+            try {
+                photoFile = createImageFile();
 
-                //Assign values for each row.
-                newValues.put(KEY_FIRST_NAME_COLUMN, firstName);
-                newValues.put(KEY_LAST_NAME_COLUMN, lastName);
-                newValues.put(KEY_EMAIL_ADDRESS_COLUMN, emailAdd);
-                newValues.put(KEY_FITNESS_LEVEL_COLUMN, fitLevel);
-
-
+            } catch (IOException ex) {
 
             }
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(ListCustomers.this,
+                        ListCustomers.this.getApplicationContext().getPackageName() + ".provider",
+                        createImageFile());
 
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }*/
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resutlCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resutlCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImageView.setImageBitmap(imageBitmap);
+
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMDD_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
+
+
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
 
 
     @Override
